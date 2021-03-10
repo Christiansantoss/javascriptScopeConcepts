@@ -74,16 +74,21 @@
 
 // var addArrow = (a, b) => a + b;
 
-// Example
+// *************Example*******
 // clean code
 // Declare variables at the top of each scope
 // Always declare functions first and use them after declaration
 
-if (!numProducts) deleteShoppingCart(); // because of hoisting the all products gets deleted
-// even when products is 10
+// if (!numProducts) deleteShoppingCart(); // because of hoisting the all products gets deleted
+// // even when products is 10
 
-const numProducts = 10; //dont use var to declare variables use const or let if you need to reassign a variable
+// var numProducts = 10; //dont use var to declare variables use const or let if you need to reassign a variable
 
-function deleteShoppingCart() {
-  console.log('All Products deleted');
-}
+// function deleteShoppingCart() {
+//   console.log('All Products deleted');
+// }
+
+// var x = 1; // variables declared with var will create a property on the window object
+// console.log(x === window.x);
+// let y = 2; // variables declared with let or const wont create a property on the window object
+// const z = 3;
