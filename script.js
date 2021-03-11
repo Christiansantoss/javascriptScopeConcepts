@@ -92,3 +92,41 @@
 // console.log(x === window.x);
 // let y = 2; // variables declared with let or const wont create a property on the window object
 // const z = 3;
+
+// ****************** This Keyword ****************
+
+// console.log(this);
+
+// // const calcAge = function (birthYear) {
+// //   console.log(2037 - birthYear);
+// //   console.log(this);
+// // };
+
+// // calcAge(1991);
+
+// const calcAge = birthYear => {
+//   // Arrow function does not get its own this keyword
+//   // Arrow function using its lexical this keyword
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+
+// calcAge(1991);
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year); // calculate data based on whats already in object with THIS keyword
+  },
+};
+// THIS keyword works because in the function call
+//jonas is being referenced "CALLED"
+jonas.calcAge(); // jonas was the object calling the method calcAge
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge; // method borrowing from one object to another
+matilda.calcAge();
