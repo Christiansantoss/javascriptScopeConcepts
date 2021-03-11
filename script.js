@@ -113,24 +113,72 @@
 
 // calcAge(1991);
 
+// const jonas = {
+//   year: 1991,
+//   calcAge: function () {
+//     // console.log(this);
+//     console.log(2037 - this.year); // calculate data based on whats already in object with THIS keyword
+//   },
+// };
+// // THIS keyword works because in the function call
+// //jonas is being referenced "CALLED" points to itself as in 'this'
+// jonas.calcAge(); // jonas was the object calling the method calcAge
+
+// const matilda = {
+//   year: 2017,
+// };
+
+// matilda.calcAge = jonas.calcAge; // method borrowing from one object to another
+// matilda.calcAge();
+
+// const f = jonas.calcAge;
+// f(); // function is not attatched to an object it becomes undefined
+// // it is now just a regular function call
+
+// *************pitfalls of this keyword and arrow functions below ********************
+// var firstName = 'matilda';
+
 const jonas = {
+  // not a code block but an object literal
+  firstName: 'jonas',
   year: 1991,
   calcAge: function () {
-    // console.log(this);
-    console.log(2037 - this.year); // calculate data based on whats already in object with THIS keyword
+    console.log(2037 - this.year);
+    // ****** SOLUTION 1 below ************
+
+    // const self = this; // self or that
+    // const isMillenial = function () {
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   //   console.log(this.year >= 1981 && this.year <= 1996);
+    // };
+    // ************* SOlUTION 2 ****************
+
+    const isMillenial = () => {
+      // ARROW FUNCTION INHERITS THIS KEYWORD FROM ITS PARENTS SCOPE!!!
+      console.log(this);
+      // console.log(self.year >= 1981 && self.year <= 1996);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
   },
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
+  },
+  // The parent method of the greet method is its global scope
+  // Arrow function doesnt get its own THIS keyword
+  // Uses This keyword from its sorroundings
+  // Never use an arrrow function as a method
 };
-// THIS keyword works because in the function call
-//jonas is being referenced "CALLED" points to itself as in 'this'
-jonas.calcAge(); // jonas was the object calling the method calcAge
 
-const matilda = {
-  year: 2017,
-};
+jonas.greet();
+jonas.calcAge();
 
-matilda.calcAge = jonas.calcAge; // method borrowing from one object to another
-matilda.calcAge();
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
 
-const f = jonas.calcAge;
-f(); // function is not attatched to an object it becomes undefined
-// it is now just a regular function call
+// var addArrow = (a, b) => a + b;
+
+const addExpr;
