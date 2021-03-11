@@ -121,7 +121,7 @@ const jonas = {
   },
 };
 // THIS keyword works because in the function call
-//jonas is being referenced "CALLED"
+//jonas is being referenced "CALLED" points to itself as in 'this'
 jonas.calcAge(); // jonas was the object calling the method calcAge
 
 const matilda = {
@@ -130,3 +130,7 @@ const matilda = {
 
 matilda.calcAge = jonas.calcAge; // method borrowing from one object to another
 matilda.calcAge();
+
+const f = jonas.calcAge;
+f(); // function is not attatched to an object it becomes undefined
+// it is now just a regular function call
