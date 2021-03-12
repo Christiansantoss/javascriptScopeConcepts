@@ -138,47 +138,89 @@
 // *************pitfalls of this keyword and arrow functions below ********************
 // var firstName = 'matilda';
 
-const jonas = {
-  // not a code block but an object literal
-  firstName: 'jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(2037 - this.year);
-    // ****** SOLUTION 1 below ************
+// const jonas = {
+//   // not a code block but an object literal
+//   firstName: 'jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(2037 - this.year);
+//     // ****** SOLUTION 1 below ************
 
-    // const self = this; // self or that
-    // const isMillenial = function () {
-    //   console.log(self);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    //   //   console.log(this.year >= 1981 && this.year <= 1996);
-    // };
-    // ************* SOlUTION 2 ****************
+//     // const self = this; // self or that
+//     // const isMillenial = function () {
+//     //   console.log(self);
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     //   //   console.log(this.year >= 1981 && this.year <= 1996);
+//     // };
+//     // ************* SOlUTION 2 ****************
 
-    const isMillenial = () => {
-      // ARROW FUNCTION INHERITS THIS KEYWORD FROM ITS PARENTS SCOPE!!!
-      console.log(this);
-      // console.log(self.year >= 1981 && self.year <= 1996);
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    isMillenial();
-  },
-  greet: () => {
-    console.log(this);
-    console.log(`Hey ${this.firstName}`);
-  },
-  // The parent method of the greet method is its global scope
-  // Arrow function doesnt get its own THIS keyword
-  // Uses This keyword from its sorroundings
-  // Never use an arrrow function as a method
-};
+//     const isMillenial = () => {
+//       // ARROW FUNCTION INHERITS THIS KEYWORD FROM ITS PARENTS SCOPE!!!
+//       console.log(this);
+//       // console.log(self.year >= 1981 && self.year <= 1996);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isMillenial();
+//   },
+//   greet: () => {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   },
+//   // The parent method of the greet method is its global scope
+//   // Arrow function doesnt get its own THIS keyword
+//   // Uses This keyword from its sorroundings
+//   // Never use an arrrow function as a method
+// };
 
-jonas.greet();
-jonas.calcAge();
+// jonas.greet();
+// jonas.calcAge();
 
+// *****      Arguments keyword    ***********
 // const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addExpr(2, 5);
+// addExpr(2, 5, 8, 12);
+
+// var addArrow = (a, b) => {
+//   // argument keyword only exists in function declaration not in arrow functions
+//   console.log(arguments);
 //   return a + b;
 // };
 
-// var addArrow = (a, b) => a + b;
+// addArrow(2, 5, 8);
 
-const addExpr;
+// *****************    Primitive Data Types *******************
+
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+// console.log(age);
+// console.log(oldAge);
+
+// const me = {
+//   name: 'jonas',
+//   age: 30,
+// };
+
+// const friend = me;
+// friend.age = 27;
+// console.log('Friend:', friend);
+// console.log('Me', me);
+
+let lastName = 'Williams'; // primitive type stored in stack
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const marriedJessica = jessica; // Object referenced type stored in stack and heap
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage', marriedJessica);
