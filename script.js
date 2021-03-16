@@ -209,10 +209,10 @@
 // console.log('Friend:', friend);
 // console.log('Me', me);
 
-let lastName = 'Williams'; // primitive type stored in stack
-let oldLastName = lastName;
-lastName = 'Davis';
-console.log(lastName, oldLastName);
+// let lastName = 'Williams'; // primitive type stored in stack
+// let oldLastName = lastName;
+// lastName = 'Davis';
+// // console.log(lastName, oldLastName);
 
 const jessica = {
   firstName: 'Jessica',
@@ -222,5 +222,24 @@ const jessica = {
 
 const marriedJessica = jessica; // Object referenced type stored in stack and heap
 marriedJessica.lastName = 'Davis';
-console.log('Before marriage:', jessica);
-console.log('After marriage', marriedJessica);
+// console.log('Before marriage:', jessica);
+// console.log('After marriage', marriedJessica);
+
+// Copying objects
+
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+// shallow clone
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
